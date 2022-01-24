@@ -1,8 +1,8 @@
 {
   "name": "discourse-custom-wizard",
-  "version": "1.0.0",
-  "repository": "git@github.com:paviliondev/discourse-custom-wizard.git",
-  "author": "Pavilion",
+  "version": "1.0.1",
+  "repository": "git@github.com:mongodb-forks/discourse-custom-wizard.git",
+  "author": "mongodb-forks",
   "license": "GPL V2",
   "devDependencies": {
     "eslint-config-discourse": "^1.1.8",

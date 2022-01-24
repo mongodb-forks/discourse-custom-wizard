@@ -3,8 +3,8 @@
 # about: Create custom wizards
 # version: 1.16.3
 # authors: Angus McLeod
-# url: https://github.com/paviliondev/discourse-custom-wizard
-# contact emails: angus@thepavilion.io
+# url: https://github.com/mongodb-forks/discourse-custom-wizard
+# contact emails: deet-team@mongodb.com
 
 gem 'liquid', '5.0.1', require: true
 register_asset 'stylesheets/common/wizard-admin.scss'
