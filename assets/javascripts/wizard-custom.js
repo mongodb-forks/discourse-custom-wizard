@@ -19,6 +19,7 @@
 
 //= require discourse/app/services/app-events
 //= require discourse/app/services/emoji-store
+//= require discourse/app/services/store
 
 //= require discourse/app/components/user-selector
 //= require discourse/app/components/conditional-loading-spinner
@@ -60,6 +61,7 @@
 
 //= require markdown-it-bundle
 //= require lodash.js
+//= require template_include.js
 //= require itsatrap.js
 //= require caret_position.js
 //= require popper.js
