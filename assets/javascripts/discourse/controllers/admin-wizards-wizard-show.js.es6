@@ -36,8 +36,10 @@ export default Controller.extend({
 
   @discourseComputed("wizard.id")
   wizardUrl(wizardId) {
-    return window.location.origin + "/w/" + dasherize(wizardId);
-  },
+    let url = window.location.href;
+    let split_url = url.split('/admin');
+    return split_url[0] + "/w/" + dasherize(wizardId);
+    },
 
   @discourseComputed("wizard.after_time_scheduled")
   nextSessionScheduledLabel(scheduled) {
