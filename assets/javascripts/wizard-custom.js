@@ -60,7 +60,6 @@
 
 //= require markdown-it-bundle
 //= require lodash.js
-//= require mousetrap.js
 //= require template_include.js
 //= require itsatrap.js
 //= require caret_position.js
