@@ -15,6 +15,14 @@
     p {
       margin: 0 0 0.5em 0;
     }
+  
+    img.emoji {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+
+  }
 
   .wizard-step-description {
     flex: 0;
