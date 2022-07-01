@@ -31,7 +31,7 @@ jobs:
         build_type: ["backend", "frontend"]
         ruby: ["2.7"]
         postgres: ["12"]
-        redis: ["4.x"]
+        redis: ["6.x"]
 
     services:
       postgres:
@@ -49,33 +49,25 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: haya14busa/action-cond@v1
+        id: discourse_branch
+        with:
+          cond: ${{  github.base_ref == 'stable' }}
+          if_true: "stable"
+          if_false: "tests-passed"
+
+      - uses: actions/checkout@v3
         with:
           repository: discourse/discourse
-          ref: "${{ (github.base_ref || github.ref) }}"
+          ref: ${{ steps.discourse_branch.outputs.value }}
           fetch-depth: 1
-
-      - name: Fetch Repo Name
-        id: repo-name
-        run: echo "::set-output name=value::$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"
 
       - name: Install plugin
         uses: actions/checkout@v2
         with:
-          path: plugins/${{ steps.repo-name.outputs.value }}
+          path: plugins/${{ github.event.repository.name }}
+          ref: "${{ github.head_ref }}"
           fetch-depth: 1
-
-      - name: Check spec existence
-        id: check_spec
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "plugins/${{ steps.repo-name.outputs.value }}/spec"
-
-      - name: Check qunit existence
-        id: check_qunit
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "plugins/${{ steps.repo-name.outputs.value }}/test/javascripts"
 
       - name: Setup Git
         run: |
@@ -132,10 +124,11 @@ jobs:
           bin/rake db:migrate
 
       - name: Plugin RSpec with Coverage
-        if: matrix.build_type == 'backend' && steps.check_spec.outputs.files_exists == 'true'
-        run: SIMPLECOV=1 bin/rake plugin:spec[${{ steps.repo-name.outputs.value }}]
-
-      - name: Plugin QUnit
-        if: matrix.build_type == 'frontend' && steps.check_qunit.outputs.files_exists == 'true'
-        run: bundle exec rake plugin:qunit['${{ steps.repo-name.outputs.value }}','1200000']
-        timeout-minutes: 30
+        if: matrix.build_type == 'backend'
+        run: |
+          if [ -e plugins/${{ steps.repo-name.outputs.value }}/.simplecov ]
+          then
+            cp plugins/${{ steps.repo-name.outputs.value }}/.simplecov .simplecov
+            export COVERAGE=1
+          fi
+          bin/rake plugin:spec[${{ steps.repo-name.outputs.value }}]

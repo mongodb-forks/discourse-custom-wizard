@@ -1,4 +1,4 @@
-.custom-wizard {
+body.custom-wizard {
   .wizard-field {
     margin-bottom: 1em;
 
@@ -172,5 +172,9 @@
         color: transparent;
       }
     }
+  }
+
+  .wizard-category-selector {
+    width: 500px;
   }
 }

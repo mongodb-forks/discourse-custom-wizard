@@ -13,6 +13,7 @@ import { uploadIcon } from "discourse/lib/uploads";
 import { dasherize } from "@ember/string";
 
 export default ComposerEditor.extend({
+  layoutName: "wizard/templates/components/wizard-composer-editor",
   classNameBindings: ["fieldClass"],
   allowUpload: true,
   showLink: false,
@@ -24,7 +25,7 @@ export default ComposerEditor.extend({
   lastValidatedAt: "lastValidatedAt",
   popupMenuOptions: [],
   draftStatus: "null",
-  replyPlaceholder: alias("field.placeholder"),
+  replyPlaceholder: alias("field.translatedPlaceholder"),
   uploadingFieldId: null,
 
   @on("didInsertElement")

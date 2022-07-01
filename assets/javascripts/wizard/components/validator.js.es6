@@ -1,16 +1,16 @@
 import Component from "@ember/component";
 import { equal } from "@ember/object/computed";
 import { ajax } from "discourse/lib/ajax";
-import { getToken } from "wizard/lib/ajax";
+import { getToken } from "../lib/ajax";
 
 export default Component.extend({
   classNames: ["validator"],
   classNameBindings: ["isValid", "isInvalid"],
+  layoutName: "wizard/templates/components/validator",
   validMessageKey: null,
   invalidMessageKey: null,
   isValid: null,
   isInvalid: equal("isValid", false),
-  layoutName: "components/validator", // useful for sharing the template with extending components
 
   init() {
     this._super(...arguments);
