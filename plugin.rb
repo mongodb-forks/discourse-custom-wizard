@@ -1,32 +1,19 @@
 # frozen_string_literal: true
 # name: discourse-custom-wizard
-# about: Create custom wizards
-# version: 1.16.4
-# authors: Angus McLeod
+# about: Forms for Discourse. Better onboarding, structured posting, data enrichment, automated actions and much more.
+# version: 1.22.9
+# authors: Angus McLeod, Faizaan Gagan, Robert Barrow, Keegan George
 # url: https://github.com/paviliondev/discourse-custom-wizard
-# contact emails: angus@thepavilion.io
+# contact_emails: development@pavilion.tech
+# subscription_url: https://coop.pavilion.tech
 
 gem 'liquid', '5.0.1', require: true
+
 register_asset 'stylesheets/common/wizard-admin.scss'
 register_asset 'stylesheets/common/wizard-mapper.scss'
+register_asset 'stylesheets/common/wizard-custom.scss'
 
 enabled_site_setting :custom_wizard_enabled
-
-config = Rails.application.config
-plugin_asset_path = "#{Rails.root}/plugins/discourse-custom-wizard/assets"
-config.assets.paths << "#{plugin_asset_path}/javascripts"
-config.assets.paths << "#{plugin_asset_path}/stylesheets/wizard"
-
-if Rails.env.production?
-  config.assets.precompile += %w{
-    wizard-custom-guest.js
-    wizard-custom-globals.js
-    wizard-custom.js
-    wizard-custom-start.js
-    wizard-plugin.js.erb
-    wizard-raw-templates.js.erb
-  }
-end
 
 if respond_to?(:register_svg_icon)
   register_svg_icon "far-calendar"
@@ -36,38 +23,22 @@ if respond_to?(:register_svg_icon)
   register_svg_icon "arrow-right"
 end
 
-class ::Sprockets::DirectiveProcessor
-  def process_require_tree_discourse_directive(path = ".")
-    raise CustomWizard::SprocketsEmptyPath, "path cannot be empty" if path == "."
-
-    discourse_asset_path = "#{Rails.root}/app/assets/javascripts/"
-    path = File.expand_path(path, discourse_asset_path)
-    stat = @environment.stat(path)
-
-    if stat && stat.directory?
-      require_paths(*@environment.stat_sorted_tree_with_dependencies(path))
-    else
-      raise CustomWizard::SprocketsFileNotFound, "#{path} not found in discourse core"
-    end
-  end
-end
-
 after_initialize do
   %w[
     ../lib/custom_wizard/engine.rb
     ../config/routes.rb
-    ../controllers/custom_wizard/admin/admin.rb
-    ../controllers/custom_wizard/admin/wizard.rb
-    ../controllers/custom_wizard/admin/submissions.rb
-    ../controllers/custom_wizard/admin/api.rb
-    ../controllers/custom_wizard/admin/logs.rb
-    ../controllers/custom_wizard/admin/manager.rb
-    ../controllers/custom_wizard/admin/custom_fields.rb
-    ../controllers/custom_wizard/wizard.rb
-    ../controllers/custom_wizard/steps.rb
-    ../controllers/custom_wizard/realtime_validations.rb
-    ../jobs/refresh_api_access_token.rb
-    ../jobs/set_after_time_wizard.rb
+    ../app/controllers/custom_wizard/admin/admin.rb
+    ../app/controllers/custom_wizard/admin/wizard.rb
+    ../app/controllers/custom_wizard/admin/submissions.rb
+    ../app/controllers/custom_wizard/admin/api.rb
+    ../app/controllers/custom_wizard/admin/logs.rb
+    ../app/controllers/custom_wizard/admin/manager.rb
+    ../app/controllers/custom_wizard/admin/custom_fields.rb
+    ../app/controllers/custom_wizard/wizard.rb
+    ../app/controllers/custom_wizard/steps.rb
+    ../app/controllers/custom_wizard/realtime_validations.rb
+    ../app/jobs/refresh_api_access_token.rb
+    ../app/jobs/set_after_time_wizard.rb
     ../lib/custom_wizard/validators/template.rb
     ../lib/custom_wizard/validators/update.rb
     ../lib/custom_wizard/action_result.rb
@@ -92,29 +63,34 @@ after_initialize do
     ../lib/custom_wizard/api/log_entry.rb
     ../lib/custom_wizard/liquid_extensions/first_non_empty.rb
     ../lib/custom_wizard/exceptions/exceptions.rb
-    ../serializers/custom_wizard/api/authorization_serializer.rb
-    ../serializers/custom_wizard/api/basic_endpoint_serializer.rb
-    ../serializers/custom_wizard/api/endpoint_serializer.rb
-    ../serializers/custom_wizard/api/log_serializer.rb
-    ../serializers/custom_wizard/api_serializer.rb
-    ../serializers/custom_wizard/basic_api_serializer.rb
-    ../serializers/custom_wizard/basic_wizard_serializer.rb
-    ../serializers/custom_wizard/custom_field_serializer.rb
-    ../serializers/custom_wizard/wizard_field_serializer.rb
-    ../serializers/custom_wizard/wizard_step_serializer.rb
-    ../serializers/custom_wizard/wizard_serializer.rb
-    ../serializers/custom_wizard/log_serializer.rb
-    ../serializers/custom_wizard/submission_serializer.rb
-    ../serializers/custom_wizard/realtime_validation/similar_topics_serializer.rb
-    ../extensions/extra_locales_controller.rb
-    ../extensions/invites_controller.rb
-    ../extensions/users_controller.rb
-    ../extensions/custom_field/preloader.rb
-    ../extensions/custom_field/serializer.rb
-    ../extensions/custom_field/extension.rb
+    ../app/serializers/custom_wizard/api/authorization_serializer.rb
+    ../app/serializers/custom_wizard/api/basic_endpoint_serializer.rb
+    ../app/serializers/custom_wizard/api/endpoint_serializer.rb
+    ../app/serializers/custom_wizard/api/log_serializer.rb
+    ../app/serializers/custom_wizard/api_serializer.rb
+    ../app/serializers/custom_wizard/basic_api_serializer.rb
+    ../app/serializers/custom_wizard/basic_wizard_serializer.rb
+    ../app/serializers/custom_wizard/custom_field_serializer.rb
+    ../app/serializers/custom_wizard/wizard_field_serializer.rb
+    ../app/serializers/custom_wizard/wizard_step_serializer.rb
+    ../app/serializers/custom_wizard/wizard_serializer.rb
+    ../app/serializers/custom_wizard/log_serializer.rb
+    ../app/serializers/custom_wizard/submission_serializer.rb
+    ../app/serializers/custom_wizard/realtime_validation/similar_topics_serializer.rb
+    ../lib/custom_wizard/extensions/extra_locales_controller.rb
+    ../lib/custom_wizard/extensions/invites_controller.rb
+    ../lib/custom_wizard/extensions/guardian.rb
+    ../lib/custom_wizard/extensions/users_controller.rb
+    ../lib/custom_wizard/extensions/tags_controller.rb
+    ../lib/custom_wizard/extensions/custom_field/preloader.rb
+    ../lib/custom_wizard/extensions/custom_field/serializer.rb
+    ../lib/custom_wizard/extensions/custom_field/extension.rb
+    ../lib/custom_wizard/extensions/discourse_tagging.rb
   ].each do |path|
     load File.expand_path(path, __FILE__)
   end
+
+  Liquid::Template.error_mode = :strict
 
   # preloaded category custom fields
   %w[
@@ -124,6 +100,10 @@ after_initialize do
   end
 
   Liquid::Template.register_filter(::CustomWizard::LiquidFilter::FirstNonEmpty)
+
+  add_to_class(:topic, :wizard_submission_id) do
+    custom_fields['wizard_submission_id']
+  end
 
   add_class_method(:wizard, :user_requires_completion?) do |user|
     wizard_result = self.new(user).requires_completion?
@@ -144,8 +124,16 @@ after_initialize do
     !!custom_redirect
   end
 
+  add_to_class(:user, :redirect_to_wizard) do
+    if custom_fields['redirect_to_wizard'].present?
+      custom_fields['redirect_to_wizard']
+    else
+      nil
+    end
+  end
+
   add_to_class(:users_controller, :wizard_path) do
-    if custom_wizard_redirect = current_user.custom_fields['redirect_to_wizard']
+    if custom_wizard_redirect = current_user.redirect_to_wizard
       "#{Discourse.base_url}/w/#{custom_wizard_redirect.dasherize}"
     else
       "#{Discourse.base_url}/wizard"
@@ -153,7 +141,7 @@ after_initialize do
   end
 
   add_to_serializer(:current_user, :redirect_to_wizard) do
-    object.custom_fields['redirect_to_wizard']
+    object.redirect_to_wizard
   end
 
   on(:user_approved) do |user|
@@ -163,15 +151,19 @@ after_initialize do
   end
 
   add_to_class(:application_controller, :redirect_to_wizard_if_required) do
-    wizard_id = current_user.custom_fields['redirect_to_wizard']
     @excluded_routes ||= SiteSetting.wizard_redirect_exclude_paths.split('|') + ['/w/']
     url = request.referer || request.original_url
+    excluded_route = @excluded_routes.any? { |str| /#{str}/ =~ url }
+    not_api = request.format === 'text/html'
 
-    if request.format === 'text/html' && !@excluded_routes.any? { |str| /#{str}/ =~ url } && wizard_id
-      if request.referer !~ /\/w\// && request.referer !~ /\/invites\//
-        CustomWizard::Wizard.set_wizard_redirect(current_user, wizard_id, request.referer)
-      end
-      if CustomWizard::Template.exists?(wizard_id)
+    if not_api && !excluded_route
+      wizard_id = current_user.redirect_to_wizard
+
+      if CustomWizard::Template.can_redirect_users?(wizard_id)
+        if url !~ /\/w\// && url !~ /\/invites\//
+          CustomWizard::Wizard.set_wizard_redirect(current_user, wizard_id, url)
+        end
+
         redirect_to "/w/#{wizard_id.dasherize}"
       end
     end
@@ -198,6 +190,7 @@ after_initialize do
   ::ExtraLocalesController.prepend ExtraLocalesControllerCustomWizard
   ::InvitesController.prepend InvitesControllerCustomWizard
   ::UsersController.prepend CustomWizardUsersController
+  ::Guardian.prepend CustomWizardGuardian
 
   full_path = "#{Rails.root}/plugins/discourse-custom-wizard/assets/stylesheets/wizard/wizard_custom.scss"
   if Stylesheet::Importer.respond_to?(:plugin_assets)
@@ -227,6 +220,11 @@ after_initialize do
 
   CustomWizard::CustomField.serializers.each do |serializer_klass|
     "#{serializer_klass}_serializer".classify.constantize.prepend CustomWizardCustomFieldSerializer
+  end
+
+  reloadable_patch do |plugin|
+    ::TagsController.prepend CustomWizardTagsController
+    ::DiscourseTagging.singleton_class.prepend CustomWizardDiscourseTagging
   end
 
   DiscourseEvent.trigger(:custom_wizard_ready)

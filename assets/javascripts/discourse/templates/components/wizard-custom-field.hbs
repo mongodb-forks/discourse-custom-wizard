@@ -19,7 +19,7 @@
   <div class="setting-label">
     <label>{{i18n "admin.wizard.field.required"}}</label>
   </div>
-  
+
   <div class="setting-value">
     <span>{{i18n "admin.wizard.field.required_label"}}</span>
     {{input type="checkbox" checked=field.required}}
@@ -44,7 +44,7 @@
       imageUrl=field.image
       onUploadDone=(action "imageUploadDone")
       onUploadDeleted=(action "imageUploadDeleted")
-      type="wizard-step"
+      type="wizard-field-image"
       class="no-repeat contain-image"
       id=(concat "wizard-field-" field.id "-image-upload")}}
   </div>
@@ -54,7 +54,7 @@
   <div class="setting-label">
     <label>{{i18n "admin.wizard.type"}}</label>
   </div>
-  
+
   <div class="setting-value">
     {{combo-box
       value=field.type
@@ -208,6 +208,22 @@
   </div>
 {{/if}}
 
+{{#if isTag}}
+  <div class="setting full field-mapper-setting">
+    <div class="setting-label">
+      <label>{{i18n "admin.wizard.field.tag_groups"}}</label>
+    </div>
+
+    <div class="setting-value">
+      {{tag-group-chooser
+        id=(concat field.id "-tag-groups")
+        tagGroups=field.tag_groups
+        onChange=(action (mut field.tag_groups))
+      }}
+    </div>
+  </div>
+{{/if}}
+
 {{#if showAdvanced}}
   {{wizard-advanced-toggle showAdvanced=field.showAdvanced}}
 
@@ -243,7 +259,7 @@
           <div class="setting-label">
             <label>{{i18n "admin.wizard.field.property"}}</label>
           </div>
-          
+
           <div class="setting-value">
             {{combo-box
               value=field.property

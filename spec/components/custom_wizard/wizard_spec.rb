@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../plugin_helper'
-
 describe CustomWizard::Wizard do
   fab!(:user) { Fabricate(:user) }
   fab!(:trusted_user) { Fabricate(:user, trust_level: TrustLevel[3]) }
@@ -192,15 +190,6 @@ describe CustomWizard::Wizard do
     expect(
       CustomWizard::Wizard.new(@permitted_template, trusted_user).can_access?
     ).to eq(false)
-  end
-
-  it "lists the site groups" do
-    expect(@wizard.groups.length).to eq(8)
-  end
-
-  it "lists the site categories" do
-    Site.clear_cache
-    expect(@wizard.categories.length).to eq(1)
   end
 
   context "submissions" do

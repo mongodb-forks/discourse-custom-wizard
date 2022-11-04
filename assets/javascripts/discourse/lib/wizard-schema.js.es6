@@ -43,6 +43,7 @@ const step = {
     title: null,
     key: null,
     banner: null,
+    banner_upload_id: null,
     raw_description: null,
     required_data: null,
     required_data_message: null,
@@ -68,6 +69,7 @@ const field = {
     index: null,
     label: null,
     image: null,
+    image_upload_id: null,
     description: null,
     required: null,
     key: null,
@@ -224,7 +226,7 @@ export function buildFieldValidations(validations) {
   wizardSchema.field.validations = validations;
 }
 
-const siteSettings = getOwner(this).lookup("site-settings:main");
+const siteSettings = getOwner(this).lookup("service:site-settings");
 if (siteSettings.wizard_apis_enabled) {
   wizardSchema.action.types.send_to_api = {
     api: null,

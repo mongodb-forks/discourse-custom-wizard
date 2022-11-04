@@ -28,7 +28,7 @@ export default Component.extend(UndoChanges, {
   isComposerPreview: equal("field.type", "composer_preview"),
   categoryPropertyTypes: selectKitContent(["id", "slug"]),
   showAdvanced: alias("field.type"),
-  messageUrl: "https://thepavilion.io/t/2809",
+  messageUrl: "https://plugins.discourse.pavilion.tech/t/field-settings",
 
   @discourseComputed("field.type")
   validations(type) {
@@ -86,8 +86,8 @@ export default Component.extend(UndoChanges, {
     if (this.isDropdown) {
       options.wizardFieldSelection = "key,value";
       options.userFieldOptionsSelection = "output";
-      options.textSelection = "key,value,output";
-      options.inputTypes = "conditional,association,assignment";
+      options.textSelection = "key,value";
+      options.inputTypes = "association,conditional,assignment";
       options.pairConnector = "association";
       options.keyPlaceholder = "admin.wizard.key";
       options.valuePlaceholder = "admin.wizard.value";
@@ -144,11 +144,17 @@ export default Component.extend(UndoChanges, {
 
   actions: {
     imageUploadDone(upload) {
-      this.set("field.image", upload.url);
+      this.setProperties({
+        "field.image": upload.url,
+        "field.image_upload_id": upload.id,
+      });
     },
 
     imageUploadDeleted() {
-      this.set("field.image", null);
+      this.setProperties({
+        "field.image": null,
+        "field.image_upload_id": null,
+      });
     },
   },
 });

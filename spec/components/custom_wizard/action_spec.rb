@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require_relative '../../plugin_helper'
 
 describe CustomWizard::Action do
   fab!(:user) { Fabricate(:user, name: "Angus", username: 'angus', email: "angus@email.com", trust_level: TrustLevel[2]) }
@@ -20,6 +19,20 @@ describe CustomWizard::Action do
         "#{Rails.root}/plugins/discourse-custom-wizard/spec/fixtures/actions/open_composer.json"
       ).read
     )
+  }
+
+  let(:create_topic) {
+    JSON.parse(
+      File.open(
+        "#{Rails.root}/plugins/discourse-custom-wizard/spec/fixtures/actions/create_topic.json"
+      ).read
+    )
+  }
+
+  let(:custom_field_json) {
+    JSON.parse(File.open(
+      "#{Rails.root}/plugins/discourse-custom-wizard/spec/fixtures/custom_field/custom_fields.json"
+    ).read)
   }
 
   before do
@@ -107,6 +120,40 @@ describe CustomWizard::Action do
       expect(topic_custom_field.exists?).to eq(true)
       expect(topic_json_custom_field.exists?).to eq(true)
       expect(post_custom_field.exists?).to eq(true)
+    end
+
+    it "adds registered custom fields" do
+      custom_field = custom_field_json['custom_fields'][0]
+      custom_field_name = custom_field["name"]
+      custom_field_value = "Custom value"
+
+      CustomWizard::CustomField.new(nil, custom_field).save
+      create_topic["custom_fields"] = [
+        {
+          "type": "association",
+          "pairs": [
+            {
+              "index": 0,
+              "key": custom_field_name,
+              "key_type": "custom_field",
+              "value": custom_field_value,
+              "value_type": "text",
+              "connector": "association"
+            }
+          ]
+        }
+      ]
+
+      wizard = CustomWizard::Wizard.new(@template, user)
+      action = CustomWizard::Action.new(
+        wizard: wizard,
+        action: create_topic.with_indifferent_access,
+        submission: wizard.current_submission
+      )
+      action.perform
+
+      expect(action.result.success?).to eq(true)
+      expect(TopicCustomField.exists?(name: custom_field_name, value: custom_field_value)).to eq(true)
     end
   end
 

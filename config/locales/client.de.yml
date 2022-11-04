@@ -1,0 +1,527 @@
+de:
+  js:
+    wizard:
+      complete_custom: "Schließe {{name}} ab"
+      completed: "Du hast diesen Assistenten abgeschlossen."
+      not_permitted: "Du bist nicht berechtigt, auf diesen Assistenten zuzugreifen."
+      none: "Es gibt hier keinen Assistenten."
+      return_to_site: "Zurück zu {{siteName}}"
+      requires_login: "Du musst eingeloggt sein, um auf diesen Assistenten zuzugreifen."
+      reset: "Diesen Assistenten zurücksetzen."
+      step_not_permitted: "Du bist nicht berechtigt, diesen Schritt anzusehen."
+      incomplete_submission:
+        title: "Den gespeicherten Entwurf vom %{date} fortsetzen?"
+        resume: "Weiter"
+        restart: "Neu beginnen"
+      x_characters:
+        one: "%{count} Zeichen"
+        other: "%{count} Zeichen"
+      quit: "Vielleicht später"
+      done_custom: "Fertig"
+      back: "Zurück"
+      next: "Weiter"
+      step: "%{current} von %{total}"
+      upload: "Hochladen"
+      uploading: "Hochladen..."
+      upload_error: "Leider ist ein Fehler beim Hochladen der Datei aufgetreten. Bitte versuche es erneut."
+    wizard_composer:
+      show_preview: "Beitrags-Vorschau"
+      hide_preview: "Beitrag bearbeiten"
+      quote_post_title: "Gesamten Beitrag zitieren"
+      bold_label: "B"
+      bold_title: "Fett"
+      bold_text: "fett gedruckter Text"
+      italic_label: "I"
+      italic_title: "Hervorhebung"
+      italic_text: "hervorgehobener Text"
+      link_title: "Hyperlink"
+      link_description: "hier Linkbeschreibung eingeben"
+      link_dialog_title: "Hyperlink einfügen"
+      link_optional_text: "optionaler Titel"
+      link_url_placeholder: "http://beispiel.com"
+      quote_title: "Blockzitat"
+      quote_text: "Blockzitat"
+      blockquote_text: "Blockzitat"
+      code_title: "Vorformatierter Text"
+      code_text: "vorformatierten Text mit 4 Leerzeichen einrücken"
+      paste_code_text: "tippe oder füge den Code hier ein"
+      upload_title: "Hochladen"
+      upload_description: "gib hier eine Beschreibung des Uploads ein"
+      olist_title: "Nummerierte Liste"
+      ulist_title: "Aufzählung"
+      list_item: "Listen-Element"
+      toggle_direction: "Richtung wechseln"
+      help: "Hilfe zur Markdown-Bearbeitung"
+      collapse: "den Editor minimieren"
+      abandon: "Editor schließen und Entwurf verwerfen"
+      modal_ok: "OK"
+      modal_cancel: "Abbrechen"
+      cant_send_pm: "Sorry, Du kannst keine Nachricht an %{username} senden."
+      yourself_confirm:
+        title: "Hast du vergessen Empfänger hinzuzufügen?"
+        body: "Aktuell wird diese Nachricht nur an dich selber versendet!"
+    realtime_validations:
+      similar_topics:
+        insufficient_characters: "Gib mindestens 5 Zeichen ein, um nach ähnlichen Themen zu suchen"
+        insufficient_characters_categories: "Gib mindestens 5 Zeichen ein, um in %{catLinks} nach ähnlichen Themen zu suchen"
+        results: "Dein Thema hat Ähnlichkeit mit..."
+        no_results: "Keine ähnlichen Themen."
+        loading: "Suche nach ähnlichen Themen..."
+        show: "zeigen"
+  admin_js:
+    admin:
+      wizard:
+        label: "Assistent"
+        nav_label: "Assistenten"
+        select: "Assistent auswählen"
+        create: "Assistent erstellen"
+        name: "Name"
+        name_placeholder: "Assistenten Name"
+        background: "Hintergrund"
+        background_placeholder: "#hex"
+        save_submissions: "Speichern"
+        save_submissions_label: "Wizard Einreichungen speichern."
+        multiple_submissions: "Mehrere"
+        multiple_submissions_label: "Benutzer können mehrmals einreichen."
+        after_signup: "Anmelden"
+        after_signup_label: "Benutzer, die nach der Anmeldung an den Assistenten weitergeleitet werden."
+        after_time: "Uhrzeit"
+        after_time_label: "Benutzer, die nach der Startzeit an den Assistenten weitergeleitet werden:"
+        after_time_time_label: "Startzeit"
+        after_time_modal:
+          title: "Assistent Startzeit"
+          date: "Datum"
+          time: "Uhrzeit"
+          done: "Uhrzeit festlegen"
+          clear: "Leeren"
+        required: "Erforderlich"
+        required_label: "Benutzer können den Assistenten nicht überspringen."
+        prompt_completion: "Aufforderung"
+        prompt_completion_label: "Den Benutzer zum Vervollständigen des Assistenten auffordern."
+        restart_on_revisit: "Neustart"
+        restart_on_revisit_label: "Einreichungen bei jedem Besuch löschen."
+        resume_on_revisit: "Fortsetzen"
+        resume_on_revisit_label: "Frage den Benutzer, ob er bei jedem Besuch fortfahren möchte."
+        theme_id: "Theme"
+        no_theme: "Wählen Sie ein Theme (optional)"
+        save: "Änderungen speichern"
+        remove: "Assistent löschen"
+        add: "Hinzufügen"
+        url: "Url"
+        key: "Schlüssel"
+        value: "Wert"
+        profile: "Profil"
+        translation: "Übersetzung"
+        translation_placeholder: "Schlüssel"
+        type: "Typ"
+        none: "Wähle aus"
+        submission_key: 'Einreichungsschlüssel'
+        param_key: 'Parameter'
+        group: "Gruppe"
+        permitted: "Zulässig"
+        advanced: "Erweitert"
+        undo: "Rückgängig"
+        clear: "Leeren"
+        select_type: "Wähle einen Typ"
+        condition: "Bedingung"
+        index: "Index"
+        category_settings:
+          custom_wizard:
+            title: "Benutzerdefinierter Assistent"
+            create_topic_wizard: "Wähle einen Assistenten, um den neuen Themen-Komponisten in dieser Kategorie zu ersetzen."
+        message:
+          wizard:
+            select: "Wähle einen Assistenten oder erstelle einen neuen"
+            edit: "Du bearbeitest einen Assistenten"
+            create: "Du erstellst einen neuen Assistenten"
+            documentation: "Schau dir die Assistenten-Dokumentation an"
+            contact: "Kontaktiere den Entwickler"
+          field:
+            type: "Feldtyp auswählen"
+            edit: "Du bearbeitest ein Feld"
+            documentation: "Sieh Dir die Feld-Dokumentation an"
+          action:
+            type: "Wähle einen Aktionstyp"
+            edit: "Du bearbeitest eine Aktion"
+            documentation: "Sieh Dir die Aktions-Dokumentation an"
+          custom_fields:
+            create: "Benutzerdefinierte Felder ansehen, erstellen, bearbeiten und löschen"
+            saved: "Benutzerdefiniertes Feld gespeichert"
+            error: "Speichern fehlgeschlagen: {{messages}}"
+            documentation: Sieh Dir die benutzerdefinierte Felddokumentation an
+          manager:
+            info: "Assistenten exportieren, importieren oder löschen"
+            documentation: Sieh Dir die Manager-Dokumentation an
+            none_selected: Bitte wählen Sie mindestens einen gültigen Assistenten aus
+            no_file: Bitte wähle eine zu importierende Datei aus
+            file_size_error: Die Dateigröße muss 512kb oder kleiner sein
+            file_format_error: Die Datei muss eine .json Datei sein
+            server_error: "Fehler: {{message}}"
+            importing: Assistenten werden importiert...
+            destroying: Zerstöre Assistenten...
+            import_complete: Import abgeschlossen
+            destroy_complete: Zerstörung abgeschlossen
+        editor:
+          show: "Zeigen"
+          hide: "Verstecken"
+          preview: "{{action}} Vorschau"
+          popover: "{{action}} Felder"
+        input:
+          conditional:
+            name: 'wenn'
+            output: 'dann'
+          assignment:
+            name: 'setzen'
+          association:
+            name: 'mappen'
+          validation:
+            name: 'sicherstellen'
+        selector:
+          label:
+            text: "Text"
+            wizard_field: "Assistenten Feld"
+            wizard_action: "Assistenten-Aktion"
+            user_field: "Benutzerfeld"
+            user_field_options: "Benutzerfeld-Optionen"
+            user: "Benutzer"
+            category: "Kategorie"
+            tag: "Tag"
+            group: "Gruppe"
+            list: "Liste"
+            custom_field: "benutzerdefiniertes Feld"
+            value: "Wert"
+          placeholder:
+            text: "Text eingeben"
+            property: "Eigenschaft auswählen"
+            wizard_field: "Feld auswählen"
+            wizard_action: "Aktion auswählen"
+            user_field: "Feld auswählen"
+            user_field_options: "Feld auswählen"
+            user: "Benutzer auswählen"
+            category: "Kategorie auswählen"
+            tag: "Tag auswählen"
+            group: "Gruppe auswählen"
+            list: "Element eingeben"
+            custom_field: "Feld auswählen"
+            value: "Wert auswählen"
+        error:
+          failed: "konnte den Assistenten nicht speichern"
+          required: "{{type}} benötigt {{property}}"
+          invalid: "{{property}} ist ungültig"
+          dependent: "{{property}} ist abhängig von {{dependent}}"
+          conflict: "{{type}} mit {{property}} '{{value}}' existiert bereits"
+          after_time: "Nach der Zeit ungültig"
+        step:
+          header: "Schritte"
+          title: "Titel"
+          banner: "Banner"
+          description: "Beschreibung"
+          required_data:
+            label: "Erforderlich"
+            not_permitted_message: "Nachricht wird angezeigt, wenn benötigte Daten nicht vorhanden sind"
+          permitted_params:
+            label: "Parameter"
+          force_final:
+            label: "Bedingter Schlussschritt"
+            description: "Diesen Schritt als letzten Schritt anzeigen, wenn die Bedingungen für spätere Schritte nicht überschritten sind, wenn der Benutzer diesen Schritt erreicht."
+        field:
+          header: "Felder"
+          label: "Bezeichnung"
+          description: "Beschreibung"
+          image: "Bild"
+          image_placeholder: "Bild-URL"
+          required: "Erforderlich"
+          required_label: "Feld ist erforderlich"
+          min_length: "Min. Länge"
+          min_length_placeholder: "Minimale Länge in Zeichen"
+          max_length: "Max. Länge"
+          max_length_placeholder: "Maximale Länge in Zeichen"
+          char_counter: "Zeichenzähler"
+          char_counter_placeholder: "Zeichenzähler anzeigen"
+          field_placeholder: "Feld-Platzhalter"
+          file_types: "Dateitypen"
+          preview_template: "Vorlage"
+          limit: "Limit"
+          property: "Eigentum"
+          prefill: "Vorausfüllen"
+          content: "Inhalt"
+          tag_groups: "Tag-Gruppen"
+          date_time_format:
+            label: "Format"
+            instructions: "<a href='https://momentjs.com/docs/#/displaying/format/' target='_blank'>Moment.js format</a>"
+          validations:
+            header: "Echtzeit-Überprüfungen"
+            enabled: "Aktiviert"
+            similar_topics: "Ähnliche Themen"
+            position: "Position"
+            above: "Oben"
+            below: "Unten"
+            categories: "Kategorien"
+            max_topic_age: "Max. Themen-Alter"
+            time_units:
+              days: "Tage"
+              weeks: "Wochen"
+              months: "Monate"
+              years: "Jahre"
+          type:
+            text: "Text"
+            textarea: Textbereich
+            composer: Editor
+            composer_preview: Editor-Vorschau
+            text_only: Nur Text
+            number: Nummer
+            checkbox: Checkbox
+            url: Url
+            upload: Hochladen
+            dropdown: Dropdown
+            tag: Tag
+            category: Kategorie
+            group: Gruppe
+            user_selector: Benutzer-Auswahl
+            date: Datum
+            time: Uhrzeit
+            date_time: Datum & Uhrzeit
+        connector:
+          and: "und"
+          or: "oder"
+          then: "dann"
+          set: "setzen"
+          equal: '='
+          greater: '>'
+          less: '<'
+          greater_or_equal: '>='
+          less_or_equal: '<='
+          regex: '=~'
+          association: '→'
+          is: 'ist'
+        action:
+          header: "Aktionen"
+          include: "Felder einschließen"
+          title: "Titel"
+          post: "Beitrag"
+          topic_attr: "Themen-Attribut"
+          interpolate_fields: "Füge Assistentenfelder mit der field_id in w{} ein. Füge Benutzerfelder mit dem Feldschlüssel in u{} ein."
+          run_after:
+            label: "Starte nach"
+            wizard_completion: "Assistenten-Fertigstellung"
+          custom_fields:
+            label: "Benutzerdefiniert"
+            key: "Feld"
+          skip_redirect:
+            label: "Weiterleitung"
+            description: "Den Benutzer nach Abschluss des Assistenten nicht zu {{type}} weiterleiten"
+          suppress_notifications:
+            label: "Benachrichtigungen unterdrücken"
+            description: "Normale Benachrichtigungen durch die Erstellung von Beiträgen unterdrücken"
+          send_message:
+            label: "Nachricht senden"
+            recipient: "Empfänger"
+          create_topic:
+            label: "Thema erstellen"
+            category: "Kategorie"
+            tags: "Tags"
+            visible: "Sichtbar"
+          open_composer:
+            label: "Editor öffnen"
+          update_profile:
+            label: "Profil aktualisieren"
+            setting: "Felder"
+            key: "Feld"
+          watch_categories:
+            label: "Kategorien beobachten"
+            categories: "Kategorien"
+            mute_remainder: "Verbleibende Stummschalten"
+            notification_level:
+              label: "Benachrichtigungsebene"
+              regular: "Normal"
+              watching: "Beobachten"
+              tracking: "Nachverfolgen"
+              watching_first_post: "Ersten Beitrag anschauen"
+              muted: "Stumm"
+            select_a_notification_level: "Ebene auswählen"
+            wizard_user: "Assistenten Benutzer"
+            usernames: "Benutzer"
+          post_builder:
+            checkbox: "Beitrags-Ersteller"
+            label: "Ersteller"
+            user_properties: "Benutzereinstellungen"
+            wizard_fields: "Assistenten-Felder"
+            wizard_actions: "Assistenten-Aktionen"
+            placeholder: "Füge Assistentenfelder mit der field_id in w{} ein. Füge Benutzereinstellungen mit der Eigenschaft in u{} ein."
+          add_to_group:
+            label: "Zur Gruppe hinzufügen"
+          route_to:
+            label: "Weiterleitung an"
+            url: "Url"
+            code: "Code"
+          send_to_api:
+            label: "An API senden"
+            api: "API"
+            endpoint: "Endpunkt"
+            select_an_api: "API auswählen"
+            select_an_endpoint: "Endpunkt auswählen"
+            body: "Body"
+            body_placeholder: "JSON"
+          create_category:
+            label: "Kategorie erstellen"
+            name: Name
+            slug: Kürzel
+            color: Farbe
+            text_color: Textfarbe
+            parent_category: Übergeordnete Kategorie
+            permissions: Berechtigungen
+          create_group:
+            label: Gruppe erstellen
+            name: Name
+            full_name: Vollständiger Name
+            title: Titel
+            bio_raw: Über
+            owner_usernames: Besitzer
+            usernames: Mitglieder
+            grant_trust_level: Automatische Vertrauensstufe
+            mentionable_level: Erwähnbare Ebene
+            messageable_level: Nachrichtbare Ebene
+            visibility_level: Sichtbarkeitsstufe
+            members_visibility_level: Sichtbarkeitsstufe der Mitglieder
+        custom_field:
+          nav_label: "Benutzerdefinierte Felder"
+          add: "Hinzufügen"
+          external:
+            label: "von einem anderen Plugin"
+            title: "Dieses benutzerdefinierte Feld wurde von einem anderen Plugin hinzugefügt. Du kannt es in Deinem Assistenten verwenden, aber Du kannst es hier nicht bearbeiten."
+          name:
+            label: "Name"
+            select: "unterstrichener_Name"
+          type:
+            label: "Typ"
+            select: "Wähle einen Typ"
+            string: "Zeichenkette"
+            integer: "Ganze Zahl"
+            boolean: "Boolean"
+            json: "JSON"
+          klass:
+            label: "Klasse"
+            select: "Klasse auswählen"
+            post: "Beitrag"
+            category: "Kategorie"
+            topic: "Thema"
+            group: "Gruppe"
+            user: "Benutzer"
+          serializers:
+            label: "Serialisierer"
+            select: "Wähle Serialisierer"
+            topic_view: "Themenansicht"
+            topic_list_item: "Themen-Listenelement"
+            basic_category: "Kategorie"
+            basic_group: "Gruppe"
+            post: "Beitrag"
+        submissions:
+          nav_label: "Einreichungen"
+          title: "{{name}} Einreichungen"
+          download: "Herunterladen"
+        api:
+          label: "API"
+          nav_label: 'APIs'
+          select: "API auswählen"
+          create: "API erstellen"
+          new: 'Neue API'
+          name: "Name (kann nicht geändert werden)"
+          name_placeholder: 'Unterstrichen'
+          title: 'Titel'
+          title_placeholder: 'Anzeigename'
+          remove: 'Löschen'
+          save: "Speichern"
+          auth:
+            label: "Autorisierung"
+            btn: 'Autorisieren'
+            settings: "Einstellungen"
+            status: "Status"
+            redirect_uri: "Umleitungs-URL"
+            type: 'Typ'
+            type_none: 'Wähle einen Typ'
+            url: "Autorisierungs-URL"
+            token_url: "Token-URL"
+            client_id: 'Client-ID'
+            client_secret: 'Client-Geheimnis'
+            username: 'Benutzername'
+            password: 'Passwort'
+            params:
+              label: 'Parameter'
+              new: 'Neue Parameter'
+          status:
+            label: "Status"
+            authorized: 'Authorisiert'
+            not_authorized: "Nicht authorisiert"
+            code: "Code"
+            access_token: "Zugangs-Token"
+            refresh_token: "Token aktualisieren"
+            expires_at: "Ablauf am"
+            refresh_at: "Aktualisieren am"
+          endpoint:
+            label: "Endpunkte"
+            add: "Endpunkt hinzufügen"
+            name: "Endpunkt-Name"
+            method: "Methode auswählen"
+            url: "Eine URL eingeben"
+            content_type: "Inhaltstyp auswählen"
+            success_codes: "Erfolgscodes auswählen"
+          log:
+            label: "Protokolle"
+        log:
+          nav_label: "Protokolle"
+        manager:
+          nav_label: Manager
+          title: Assistenten verwalten
+          export: Exportieren
+          import: Importieren
+          imported: importiert
+          upload: Wähle wizards.json aus
+          destroy: Zerstören
+          destroyed: zerstört
+  wizard_js:
+    group:
+      select: "Wähle eine Gruppe"
+    location:
+      name:
+        title: "Name (optional)"
+        desc: "z.B. P. Sherman Zahnarzt"
+      street:
+        title: "Nummer und Straße"
+        desc: "z.B. 42 Wallaby Way"
+      postalcode:
+        title: "Postleitzahl"
+        desc: "z.B. 2090"
+      neighbourhood:
+        title: "Nachbarschaft"
+        desc: "z.B. Cremorne Point"
+      city:
+        title: "Stadt oder Ortschaft"
+        desc: "z.B. Sydney"
+      coordinates: "Koordinaten"
+      lat:
+        title: "Breitengrad"
+        desc: "z.B. -31.9456702"
+      lon:
+        title: "Längengrad"
+        desc: "z.B. 115.8626477"
+      country_code:
+        title: "Land"
+        placeholder: "Wähle ein Land aus"
+      query:
+        title: "Adresse"
+        desc: "z.B. 42 Wallaby Way, Sydney."
+      geo:
+        desc: "Standorte bereitgestellt von {{provider}}"
+        btn:
+          label: "Standort finden"
+        results: "Standorte"
+        no_results: "Keine Ergebnisse. Bitte überprüfe die Rechtschreibung."
+        show_map: "Karte anzeigen"
+      validation:
+        neighbourhood: "Bitte gib eine Nachbarschaft ein."
+        city: "Bitte gib eine Stadt,oder Ortschaft ein."
+        street: "Bitte gib eine Hausnummer und Straße ein."
+        postalcode: "Bitte gib eine Postleitzahl ein."
+        countrycode: "Bitte wähle ein Land aus."
+        coordinates: "Bitte vervollständige das Koordinaten-Set."
+        geo_location: "Suche und wähle ein Ergebnis aus."

@@ -1,0 +1,52 @@
+pt:
+  admin:
+    wizard:
+      submission:
+        no_user: "excluído (user_id: %{user_id})"
+  wizard:
+    custom_title: "Assistente"
+    custom_field:
+      error:
+        required_attribute: "'%{attr}' é um atributo obrigatório"
+        unsupported_class: "'%{class}' não é uma classe suportada"
+        unsupported_serializers: "'%{serializers}' não é suportado serializadores para '%{class}'"
+        unsupported_type: "%{type} não é um tipo de campo personalizado suportado"
+        name_invalid: "'%{name}' não é um nome de campo personalizado válido"
+        name_too_short: "'%{name}' é muito curto para um nome de campo personalizado (comprimento mínimo é #{min_length})"
+        name_already_taken: "'%{name}' já está tomado como um nome de campo personalizado"
+        save_default: "Falha ao salvar o campo personalizado '%{name}'"
+    field:
+      too_short: "%{label} deve ter pelo menos %{min} caracteres"
+      too_long: "%{label} deve ter pelo menos %{max} caracteres"
+      required: "%{label} é obrigatório."
+      not_url: "%{label} deve ser uma url válida"
+      invalid_file: "%{label} deve ser um %{types}"
+      invalid_date: "Data inválida"
+      invalid_time: "Tempo inválido"
+    none: "Nós não conseguimos encontrar um assistente nesse endereço."
+    no_skip: "Assistente não pode ser ignorado"
+    export:
+      error:
+        select_one: "Por favor, selecione pelo menos um assistente válido"
+        invalid_wizards: "Nenhum assistente válido selecionado"
+    import:
+      error:
+        no_file: "Nenhum arquivo selecionado"
+        file_large: "Arquivo muito grande"
+        invalid_json: "O arquivo não é um arquivo json válido"
+    destroy:
+      error:
+        no_template: Nenhum modelo encontrado
+        default: Erro ao destruir assistente
+    validation:
+      required: "%{property} é obrigatório"
+      conflict: "Assistente com id '%{wizard_id}' já existe"
+      after_signup: "Você só pode ter um assistente 'após a inscrição' por vez. %{wizard_id} tem 'após a inscrição' habilitado."
+      after_signup_after_time: "Você não pode usar 'após tempo' e 'após a inscrição' no mesmo assistente."
+      after_time: "Após a configuração do tempo é inválido."
+      liquid_syntax_error: "Erro de sintaxe Liquid em %{attribute}: %{message}"
+  site_settings:
+    custom_wizard_enabled: "Ativar assistentes personalizados."
+    wizard_redirect_exclude_paths: "Rotas excluídas dos redirecionamentos do assistente."
+    wizard_recognised_image_upload_formats: "Tipos de arquivo que resultarão no upload exibindo uma visualização da imagem"
+    wizard_apis_enabled: "Habilitar recursos API (experimental)."

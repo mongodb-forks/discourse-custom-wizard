@@ -86,7 +86,7 @@ class CustomWizard::Builder
       required: field_template['required']
     }
 
-    %w(label description image key validations min_length max_length char_counter).each do |key|
+    %w(label description image key validations min_length max_length char_counter tag_groups).each do |key|
       params[key.to_sym] = field_template[key] if field_template[key]
     end
 
@@ -120,18 +120,6 @@ class CustomWizard::Builder
       params[:property] = field_template['property']
     end
 
-    if field_template['type'] === 'category' || (
-          field_template['validations'] &&
-          field_template['validations']['similar_topics'] &&
-          field_template['validations']['similar_topics']['categories'].present?
-        )
-      @wizard.needs_categories = true
-    end
-
-    if field_template['type'] === 'group'
-      @wizard.needs_groups = true
-    end
-
     if (content_inputs = field_template['content']).present?
       content = CustomWizard::Mapper.new(
         inputs: content_inputs,
@@ -150,15 +138,6 @@ class CustomWizard::Builder
             {
               id: item[:key],
               name: item[:value]
-            }
-          end
-        end
-
-        if content[:type] == 'assignment' && field_template['type'] === 'dropdown'
-          content[:result] = content[:result].map do |item|
-            {
-              id: item,
-              name: item
             }
           end
         end

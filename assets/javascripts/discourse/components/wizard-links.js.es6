@@ -78,15 +78,9 @@ export default Component.extend({
       let params = setWizardDefaults({}, itemType);
 
       params.isNew = true;
+      params.index = items.length;
 
-      let index = 0;
-      if (items.length) {
-        index = items.length;
-      }
-
-      params.index = index;
-
-      let id = `${itemType}_${index + 1}`;
+      let id = `${itemType}_${params.index + 1}`;
       if (itemType === "field") {
         id = `${this.parentId}_${id}`;
       }

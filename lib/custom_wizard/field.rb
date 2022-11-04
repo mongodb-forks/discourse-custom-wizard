@@ -11,6 +11,7 @@ class CustomWizard::Field
               :label,
               :description,
               :image,
+              :image_upload_id,
               :key,
               :validations,
               :min_length,
@@ -21,6 +22,7 @@ class CustomWizard::Field
               :limit,
               :property,
               :content,
+              :tag_groups,
               :preview_template,
               :placeholder
 
@@ -46,6 +48,7 @@ class CustomWizard::Field
     @limit = attrs[:limit]
     @property = attrs[:property]
     @content = attrs[:content]
+    @tag_groups = attrs[:tag_groups]
     @preview_template = attrs[:preview_template]
     @placeholder = attrs[:placeholder]
   end
@@ -111,7 +114,8 @@ class CustomWizard::Field
       tag: {
         limit: nil,
         prefill: nil,
-        content: nil
+        content: nil,
+        tag_groups: nil
       },
       category: {
         limit: 1,
